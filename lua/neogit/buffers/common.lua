@@ -29,8 +29,14 @@ M.Diff = Component.new(function(diff)
     }
   end)
 
+
+  local file = diff.file or "unknown file"
+
+
+
+
   return col.tag("Diff") {
-    text(diff.kind .. " " .. diff.file, { sign = "NeogitDiffHeader" }),
+    text(diff.kind .. " " .. file, { sign = "NeogitDiffHeader" }),
     col.tag("DiffContent") {
       col.tag("DiffInfo")(map(diff.info, text)),
       col.tag("HunkList")(map(hunk_props, M.Hunk)),
